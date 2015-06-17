@@ -1,6 +1,7 @@
 package com.springwebproject.dao;
 
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.springwebproject.annotations.ValidEmail;
@@ -8,6 +9,7 @@ import com.springwebproject.annotations.ValidEmail;
 public class Offer {
 
 	private int id;
+	@NotNull
 	@Size(min=5,max=100)
 	private String name;
 	

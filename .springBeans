@@ -11,6 +11,7 @@
 		<config>src/com/springwebproject/config/dao-context.xml</config>
 		<config>src/com/springwebproject/config/service-context.xml</config>
 		<config>src/com/springwebproject/config/security-context.xml</config>
+		<config>tests/com/springwebproject/web/test/config/datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
