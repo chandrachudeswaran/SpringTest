@@ -25,9 +25,59 @@ public class OffersService {
 		return offersdao.getOffers();
 	}
 	
-	@Secured("{ROLE_USER,ROLE_ADMIN}")
+	//@Secured("{ROLE_USER,ROLE_ADMIN}")
 	public boolean createOffer(Offer offer){
 		return offersdao.createOffer(offer);
+	}
+
+
+
+	public boolean hasOffer(String name) {
+		if(name==null) {
+			return false;
+		}
+		
+		List<Offer> offers = offersdao.getOffers();
+		
+		if(offers.size()==0){
+			return false;
+		}
+		return true;
+	}
+
+
+
+	public Offer getOffer(String username) {
+		
+		if(username==null){
+			return null;
+		}
+		List<Offer> offers = offersdao.getOffers();
+		
+		if(offers.size()== 0){
+			return null;
+		}
+		return offers.get(0);
+	}
+
+
+
+	public void saveorUpdateOffer(Offer offer) {
+		
+		if(offer.getId()!=0){
+			offersdao.update(offer);
+		}
+		else{
+			offersdao.createOffer(offer);
+		}
+		
+	}
+
+
+
+	public void delete(int id) {
+		offersdao.delete(id);
+		
 	}
 
 

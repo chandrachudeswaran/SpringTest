@@ -11,6 +11,7 @@
 <table class="formtable">
 
 <tr><td class="label">Username:<sf:input type="text" name="username" path="username" class="control"/><br/><sf:errors path="username" cssClass="error"></sf:errors></td></tr>
+<tr><td class="label">Name:<sf:input type="text" name="name" path="name" class="control"/><br/><sf:errors path="name" cssClass="error"></sf:errors></td></tr>
 <tr><td class="label">Email:<sf:input type="text" name="email" path="email" class="control"/><br/><sf:errors path="email" cssClass="error"></sf:errors></td></tr>
 <tr><td class="label">Password:<sf:input id = "password" type="password" name="password" path="password" class="control"/><br/><sf:errors path="password" cssClass="error"></sf:errors></td></tr>
 <tr><td class="label">Confirm Password:<input type="password" id="confirmpassword" name="confirmpass" class="control"/><div id="matchpass"></div></td></tr>

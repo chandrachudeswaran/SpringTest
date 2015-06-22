@@ -1,5 +1,6 @@
 package com.springwebproject.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springwebproject.dao.Offer;
 import com.springwebproject.service.OffersService;
@@ -30,18 +32,28 @@ public class OffersController {
 		//offerservice.throwTestException();
 		List<Offer> offers=offerservice.getCurrentOffer();
 		model.addAttribute("Offers",offers);
-	
+		
 		return "showoffers";
 	}
 	
 	@RequestMapping("/createoffers")
-	public String createOffer(Model model){
+	public String createOffer(Model model,Principal principal){
+		Offer offer=null;
 		
-		model.addAttribute("offer", new Offer());
+		if(principal !=null){
+			String username = principal.getName();
+			
+			 offer = offerservice.getOffer(username);
+		}
+		
+		if(offer == null){
+			offer = new Offer(); 
+		}
+		model.addAttribute("offer", offer);
 		return "createoffer";
 	}
 	@RequestMapping("/doCreate")
-	public String doCreate(Model model,@Valid Offer offer,BindingResult result){
+	public String doCreate(Model model,@Valid Offer offer,BindingResult result,Principal principal,@RequestParam(value="delete",required=false) String delete){
 		
 		if(result.hasErrors()){
 			System.out.println("form does not validate");
@@ -54,7 +66,21 @@ public class OffersController {
 			
 			return "createoffer";
 		}
-		offerservice.createOffer(offer);
-		return "offercreated";
+		
+		if(delete==null){
+			String username = principal.getName();
+			offer.getUser().setUsername(username);
+			offerservice.saveorUpdateOffer(offer);
+			return "offercreated";
+		}
+		
+		else{
+		
+			offerservice.delete(offer.getId());
+			return "offerdeleted";
+		}
+		
+		
+		
 	}
 }

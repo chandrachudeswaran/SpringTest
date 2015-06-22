@@ -42,8 +42,6 @@ public class OffersDaoTests {
 		jdbc.execute("delete from offers");
 		jdbc.execute("delete from users");
 		
-		
-		
 	}
 	
 	@Test
@@ -67,6 +65,18 @@ public class OffersDaoTests {
 		
 		assertEquals("Number of users should be same",1,offers.size());
 		assertEquals("Created Offers and retreived Offers should be same",offer,offers.get(0));
+	}
+	
+	@Test
+	public void testGetOffersUsername(){
+		
+		User user = new User("chandar","Chandra","chandar@gmail.com","viji",true,"user");
+		assertTrue("created",usersdao.createUser(user));
+		Offer offer = new Offer(user,"TestOffer");
+		assertTrue("Create users",offersdao.createOffer(offer));
+		
+		List<Offer> offer1 = offersdao.getOffers(user.getUsername());
+		assertEquals("TestCase3",offer,offer1.get(0));
 	}
 	
 	

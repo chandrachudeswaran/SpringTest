@@ -39,7 +39,7 @@ public class Offer {
 	}
 	
 	public Offer(){
-		
+		this.user= new User();
 	}
 	public Offer(User user, String text) {
 		super();

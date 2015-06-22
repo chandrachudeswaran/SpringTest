@@ -57,6 +57,10 @@ p.error{
 	font-size:medium;
 }
 
+input.delete{
+	border:1px solid red;
+}
+
 
 div.footer{
 	

@@ -18,6 +18,8 @@ public class User {
 	private String password;
 	private boolean enabled = false;
 	private String authority;
+	@NotBlank
+	@Size(min=5,max=10)
 	private String name;
 	
 	
