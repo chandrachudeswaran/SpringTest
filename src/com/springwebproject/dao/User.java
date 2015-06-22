@@ -1,15 +1,22 @@
 package com.springwebproject.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.springwebproject.annotations.ValidEmail;
 
-
+@Entity
+@Table(name="users")
 public class User {
 	@NotBlank
 	@Size(min=5,max=15)
+	@Id
+	@Column(name="username")
 	private String username;
 	@ValidEmail
 	private String email;

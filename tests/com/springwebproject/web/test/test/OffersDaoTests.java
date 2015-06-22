@@ -47,7 +47,7 @@ public class OffersDaoTests {
 	@Test
 	public void testCreateOffers(){
 		User user = new User("chandar","Chandra","chandar@gmail.com","viji",true,"user");
-		assertTrue("created",usersdao.createUser(user));
+		usersdao.createUser(user);
 		
 		Offer offer = new Offer(user,"TestOffer");
 		assertTrue("Create users",offersdao.createOffer(offer));
@@ -58,7 +58,7 @@ public class OffersDaoTests {
 	public void testGetOffers(){
 	
 		User user = new User("chandar","Chandra","chandar@gmail.com","viji",true,"user");
-		assertTrue("created",usersdao.createUser(user));
+		usersdao.createUser(user);
 		Offer offer = new Offer(user,"TestOffer");
 		assertTrue("Create users",offersdao.createOffer(offer));
 		List<Offer> offers = offersdao.getOffers();
@@ -71,7 +71,7 @@ public class OffersDaoTests {
 	public void testGetOffersUsername(){
 		
 		User user = new User("chandar","Chandra","chandar@gmail.com","viji",true,"user");
-		assertTrue("created",usersdao.createUser(user));
+		usersdao.createUser(user);
 		Offer offer = new Offer(user,"TestOffer");
 		assertTrue("Create users",offersdao.createOffer(offer));
 		
