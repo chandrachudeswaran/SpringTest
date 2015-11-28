@@ -17,7 +17,7 @@ import com.springwebproject.service.UserService;
 public class LoginController {
 	
 	private UserService userservice;
-	
+	private int count =0;
 	@Autowired
 	public void setUserservice(UserService userservice) {
 		this.userservice = userservice;
